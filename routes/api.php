@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SessionLogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('log', [SessionLogController::class, 'store']);
+Route::get('overall', [SessionLogController::class, 'overall']);
+Route::get('last7DaysDuration', [SessionLogController::class, 'last7DaysDuration']);
+Route::get('activeDaysOfMonth', [SessionLogController::class, 'activeDaysOfMonth']);
