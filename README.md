@@ -12,7 +12,7 @@ A basic Web app to log completed sessions (for example a readin session) and ret
 
 ## How to Use
 
-- API has 4 endpoints. 1 for create new logs and 3 for reporting.
+API has 4 endpoints. 1 for create new logs and 3 for reporting.
 
 ### To create a new log;
 
