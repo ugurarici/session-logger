@@ -49,9 +49,9 @@ class SessionLogController extends Controller
             ->orderBy('day_of_streak', 'DESC')
             ->first();
 
-        $result['yearly']['longest_streak'] = $result['yearly']['longest_streak'] ? $result['yearly']['longest_streak'] : 0;
+        $result['yearly']['longest_streak'] = $result['yearly']['longest_streak'] ? (int)$result['yearly']['longest_streak']->day_of_streak : 0;
 
-        $result['yearly']['total_duration']['seconds'] = SessionLog::query()
+        $result['yearly']['total_duration']['seconds'] = (int)SessionLog::query()
             ->where('user_id', $request->user_id)
             ->whereYear('created_at', now())
             ->sum('duration');
@@ -72,9 +72,9 @@ class SessionLogController extends Controller
             ->orderBy('day_of_streak', 'DESC')
             ->first();
 
-        $result['monthly']['longest_streak'] = $result['monthly']['longest_streak'] ? $result['monthly']['longest_streak'] : 0;
+        $result['monthly']['longest_streak'] = $result['monthly']['longest_streak'] ? (int)$result['monthly']['longest_streak']->day_of_streak : 0;
 
-        $result['monthly']['total_duration']['seconds'] = SessionLog::query()
+        $result['monthly']['total_duration']['seconds'] = (int)SessionLog::query()
             ->where('user_id', $request->user_id)
             ->whereMonth('created_at', now())
             ->sum('duration');
